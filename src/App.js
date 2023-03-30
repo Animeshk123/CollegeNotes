@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import { Auth } from "./Context/AuthContext";
+import { useContext } from "react";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Error from "./pages/Error";
+import { useState } from "react";
+import LoadingBar from "react-top-loading-bar";
 
-function App() {
+const App = () => {
+  const AuthData = useContext(Auth);
+  const [progress, setProgress] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <LoadingBar
+        color="red"
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home
+              user={AuthData.auth}
+              progress={progress}
+              SetProgress={setProgress}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/auth/login"
+          element={<Login progress={progress} SetProgress={setProgress} />}
+        />
+        <Route
+          exact
+          path="/auth/register"
+          element={<Register progress={progress} SetProgress={setProgress} />}
+        />
+        <Route path="/*" element={<Error />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
