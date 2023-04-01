@@ -98,7 +98,7 @@ const College = ({ user, SetProgress }) => {
     <>
       <Navbar user={user} />
       <div className="w-full h-screen">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto">
           <h1 className="text-center mt-32 text-3xl font-extrabold lg:text-5xl sm:text-4xl">
             Select Your College
           </h1>
