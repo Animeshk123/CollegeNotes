@@ -27,7 +27,7 @@ const AuthContext = ({ children }) => {
 
   useEffect(() => {
     getUser();
-  },[]);
+  },[key]);
 
   return <Auth.Provider value={{ auth, setAuth }}>{children}</Auth.Provider>;
 };

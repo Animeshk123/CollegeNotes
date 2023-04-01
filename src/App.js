@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Error from "./pages/Error";
 import { useState } from "react";
 import LoadingBar from "react-top-loading-bar";
+import RegisterCollege from "./pages/RegisterCollege";
 
 const App = () => {
   const AuthData = useContext(Auth);
@@ -27,6 +28,17 @@ const App = () => {
               user={AuthData.auth}
               progress={progress}
               SetProgress={setProgress}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/register/college"
+          element={
+            <RegisterCollege
+              user={AuthData.auth}
+              progress={progress}
+              setProgress={setProgress}
             />
           }
         />
