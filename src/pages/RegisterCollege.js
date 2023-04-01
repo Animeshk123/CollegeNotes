@@ -3,7 +3,6 @@ import AuthC from "../comps/AuthC";
 import { Navigate } from "react-router-dom";
 import Input from "../comps/Input";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../comps/Navbar";
 const RegisterCollege = ({ user, progress, setProgress }) => {
   useEffect(() => {
     setProgress(100);
@@ -170,7 +169,6 @@ const RegisterCollege = ({ user, progress, setProgress }) => {
         ""
       ) : User ? (
         <>
-        <Navbar user={user}/>
           <AuthC OnSubmit={handleSubmit} auth="Register College">
             <Input
               Type="text"
